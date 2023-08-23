@@ -3,6 +3,7 @@ import LineGraphComponent from '@/components/LineGraph'
 import React from 'react'
 
 const page = () => {
+  
   return (
     <div className='p-3'>
       <div className='max-w-7xl m-auto my-5'>
@@ -10,7 +11,8 @@ const page = () => {
         <CovidMap/>
       </div>
       <div className='max-w-7xl m-auto '>
-        <LineGraphComponent/>
+        <LineGraphComponent
+        />
       </div>
     </div>
   )
