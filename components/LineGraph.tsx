@@ -1,4 +1,3 @@
-"use client"
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -11,20 +10,22 @@ const formatYAxisTick = (value: number) => {
 };
 
 const LineChartComponent = ({ title = "COVID-19 Cases Over Time" }) => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      setWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
-  console.log(width);
 
   const { data: historicalData, isLoading } = useQuery({
     queryKey: ["lineChartData"],
@@ -38,10 +39,6 @@ const LineChartComponent = ({ title = "COVID-19 Cases Over Time" }) => {
     date: new Date(date).getFullYear(),
     cases,
   }));
-
-  if (typeof window === "undefined") {
-    return "Loading Page....";
-  }
 
   return (
     <div className='ml-4'>
