@@ -1,6 +1,11 @@
+import QueryProviders from '@/providers/QueryProviders'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ReduxProvider from '@/providers/ReduxProvider'
+import Sidebar from '@/components/Sidebar'
+import Hamburger from '@/components/Hamburger'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +21,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <QueryProviders>
+      <body className={inter.className}>
+        <ReduxProvider>
+          <>
+          <Hamburger/>
+          <Sidebar/>
+        {children}
+          </>
+        </ReduxProvider>
+        </body>
+      </QueryProviders>
     </html>
   )
 }
