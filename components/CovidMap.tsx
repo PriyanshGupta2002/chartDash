@@ -1,8 +1,7 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import axios from 'axios';
 import markerIconUrl from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2xUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
@@ -23,7 +22,7 @@ const CovidMap: React.FC = () => {
   
 
   return (
-    <MapContainer center={[0, 0]} zoom={2} scrollWheelZoom={false} style={{ width: '100%', height: '100vh', margin: '20px 0px',zIndex:"0" }}>
+    <MapContainer center={[0, 0]} zoom={4} scrollWheelZoom={true} className='w-full h-screen my-5 z-0 border-2 border-blue-600' >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
       {data.map((country:CountryData) => {

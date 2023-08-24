@@ -10,7 +10,6 @@ import {AiOutlineUsergroupAdd} from 'react-icons/ai'
 const Sidebar = () => {
     const isOpen = useAppSelector(state=>state.sidebar.isOpen)
     const dispatch = useDispatch<AppDispatch>()
-    console.log(isOpen)
 
   return (
     <div className={`${isOpen?"translate-x-0":"-translate-x-full"} transition-translate duration-200 ease-linear fixed inset-0 bg-black/25 z-50`} onClick={()=>dispatch(closeSidebar())}>

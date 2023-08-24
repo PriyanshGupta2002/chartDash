@@ -1,4 +1,3 @@
-"use client"
 import CovidMap from '@/components/CovidMap'
 import LineGraphComponent from '@/components/LineGraph'
 import React from 'react'

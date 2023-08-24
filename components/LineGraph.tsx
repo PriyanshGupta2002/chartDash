@@ -11,22 +11,22 @@ const formatYAxisTick = (value: number) => {
 };
 
 const LineChartComponent = ({ title = "COVID-19 Cases Over Time" }) => {
-  const [width, setWidth] = useState(0);
+  // const [width, setWidth] = useState(0);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWidth(window.innerWidth);
+  //   };
 
-    if (typeof window !== 'undefined') {
-      setWidth(window.innerWidth);
-      window.addEventListener('resize', handleResize);
+  //   if (window && typeof window !== 'undefined') {
+  //     setWidth(window.innerWidth);
+  //     window.addEventListener('resize', handleResize);
 
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, []);
+  //     return () => {
+  //       window.removeEventListener('resize', handleResize);
+  //     };
+  //   }
+  // }, []);
 
   const { data: historicalData, isLoading } = useQuery({
     queryKey: ["lineChartData"],
@@ -46,7 +46,7 @@ const LineChartComponent = ({ title = "COVID-19 Cases Over Time" }) => {
       <h2 className='text-5xl text-gray-500 font-bold mb-4'>{title}</h2>
       <div className='w-9'>
         {isLoading ? "Loading Cases Data..." : (
-          <LineChart width={width / 1.5} height={400} data={caseData} margin={{ left: 80 }}>
+          <LineChart width={300} height={400} data={caseData} margin={{ left: 80 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis tickFormatter={formatYAxisTick} />
